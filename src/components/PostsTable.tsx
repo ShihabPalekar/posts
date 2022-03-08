@@ -1,4 +1,4 @@
-import { DataGrid, getRowGroupingFieldFromGroupingCriteria, gridRowIdsSelector } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { v4 as uuidv4 } from 'uuid';
 
 const columns = [
@@ -8,7 +8,11 @@ const columns = [
   { field: "url", headerName: "URL", width: 300, sortable: false },
 ];
 
-const PostsTable = ({ ...props }) => {
+type Props = {
+  data: Array<any>
+}
+
+const PostsTable : React.FC<Props> = ({ ...props }) => {
   return (
     <div>
       {props.data === undefined ? (

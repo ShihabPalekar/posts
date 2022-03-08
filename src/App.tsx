@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PostsTable from './components/PostsTable'
 
-const App = () => {
+const App : React.FC = () => {
   const [data, setData]:any = useState([])
   const [page, setPage] = useState(1)
 
