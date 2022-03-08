@@ -4,24 +4,22 @@ import PostsTable from './components/PostsTable'
 const App : React.FC = () => {
   const [data, setData]:any = useState([])
   const [page, setPage] = useState(1)
+  const [storedData, setStoredData] : any = useState({})
 
   const fetchTableData = async (page:number) => {
     const response = await fetch(`https://hn.algolia.com/api/v1/search_by_date?query=story&page=${page}`)
     const resData = await response.json()
-    setData((prevData: any)=> [...resData.hits, ...prevData])
-    setPage(prevPage => prevPage + 1);
+    // setData((prevData: any)=> [...resData.hits, ...prevData])
+    if (storedData[page] === undefined){
+      setStoredData({...storedData, [page]: resData.hits})
+    }
   }
-  
+
+  console.log(storedData)
+
   useEffect(()=>{
     fetchTableData(page)
-  },[])
-
-  useEffect(() => {
-      const timer = setTimeout(() => {
-      fetchTableData(page);
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, [page]);
+  },[page])
   
   return (
     <div className="app">
