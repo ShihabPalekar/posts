@@ -13,12 +13,18 @@ type Props = {
   storedData: any;
   page: number;
   setPage: any;
+  setSelectedRow: any;
+  navigate: any;
 };
 
 const PostsTable: React.FC<Props> = ({ ...props }) => {
   const handlePageChange = (event: any, value: number) => {
     props.setPage(value);
-    console.log(value);
+  };
+
+  const handleRowClick = (e: any) => {
+    props.setSelectedRow(e.row);
+    props.navigate("/json");
   };
 
   return (
@@ -44,6 +50,7 @@ const PostsTable: React.FC<Props> = ({ ...props }) => {
               columns={columns}
               pageSize={20}
               rowsPerPageOptions={[20]}
+              onRowClick={handleRowClick}
             />
           </div>
           <div>
