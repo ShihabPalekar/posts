@@ -15,10 +15,13 @@ const App: React.FC = () => {
       `https://hn.algolia.com/api/v1/search_by_date?query=story&page=${page}`
     );
     const resData = await response.json();
+    
+  console.log(resData)
     if (storedData[page] === undefined) {
       setStoredData({ ...storedData, [page]: resData.hits });
     }
   };
+
 
   useEffect(() => {
     fetchTableData(page);

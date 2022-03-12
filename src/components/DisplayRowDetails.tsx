@@ -12,10 +12,10 @@ const DisplayRowDetails: React.FC<Props> = ({ ...props }) => {
   return (
     <div style={{ margin: "20px" }}>
       <div>
-        <pre>{JSON.stringify(props.selectedRow, null, 2)}</pre>
+        <pre role="json-data">{JSON.stringify(props.selectedRow, null, 2)}</pre>
       </div>
       <div>
-        <Button variant="text" onClick={goBack}>
+        <Button variant="text" role="back-button" onClick={goBack}>
           GO BACK
         </Button>
       </div>
